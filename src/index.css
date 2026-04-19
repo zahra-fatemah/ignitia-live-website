@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* IGNITIA'26 Design System
+   Warm, premium, soft light theme.
+   All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Surfaces — warm cream */
+    --background: 30 60% 98%;          /* #FFF9F5 */
+    --foreground: 24 30% 14%;          /* deep warm charcoal */
+
+    --surface-cream: 36 47% 96%;       /* #FAF7F2 */
+    --surface-elevated: 0 0% 100%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 24 30% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 30% 14%;
+
+    /* Brand — phoenix */
+    --primary: 18 91% 40%;             /* #C2410C burnt orange */
+    --primary-foreground: 30 60% 98%;
+    --primary-glow: 25 95% 53%;        /* warm orange glow */
+
+    --accent-amber: 38 92% 50%;        /* #F59E0B */
+    --accent-amber-foreground: 24 40% 12%;
+
+    /* Soft pastel chips */
+    --chip-lavender: 252 100% 96%;     /* #EDE9FE */
+    --chip-lavender-fg: 252 60% 36%;
+    --chip-blue: 204 100% 94%;         /* #E0F2FE */
+    --chip-blue-fg: 204 70% 32%;
+    --chip-mint: 152 81% 94%;          /* #ECFDF5 */
+    --chip-mint-fg: 158 64% 28%;
+    --chip-peach: 24 100% 94%;
+    --chip-peach-fg: 18 80% 36%;
+
+    /* Neutral helpers */
+    --secondary: 30 30% 94%;
+    --secondary-foreground: 24 25% 18%;
+
+    --muted: 30 30% 95%;
+    --muted-foreground: 24 10% 40%;
+
+    --accent: 30 50% 94%;
+    --accent-foreground: 24 30% 16%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 30 60% 98%;
+
+    --border: 28 25% 88%;
+    --input: 28 25% 88%;
+    --ring: 18 91% 40%;
+
+    --radius: 0.875rem;          /* 14px */
+
+    /* Gradients */
+    --gradient-warm: linear-gradient(135deg, hsl(30 60% 98%) 0%, hsl(36 70% 94%) 50%, hsl(28 80% 92%) 100%);
+    --gradient-ember: linear-gradient(135deg, hsl(18 91% 40%) 0%, hsl(25 95% 53%) 60%, hsl(38 92% 60%) 100%);
+    --gradient-soft-amber: radial-gradient(ellipse at top, hsl(38 92% 88% / 0.6), transparent 60%);
+    --gradient-hero: radial-gradient(ellipse 80% 60% at 50% 0%, hsl(25 95% 88% / 0.55), transparent 70%),
+                     radial-gradient(ellipse 60% 50% at 90% 30%, hsl(38 92% 85% / 0.45), transparent 70%),
+                     radial-gradient(ellipse 60% 60% at 10% 80%, hsl(252 80% 92% / 0.35), transparent 70%),
+                     hsl(30 60% 98%);
+
+    /* Shadows — warm, layered */
+    --shadow-soft: 0 1px 2px hsl(24 30% 14% / 0.04), 0 4px 16px hsl(24 30% 14% / 0.04);
+    --shadow-card: 0 1px 3px hsl(24 30% 14% / 0.05), 0 8px 24px hsl(24 30% 14% / 0.06);
+    --shadow-lift: 0 4px 12px hsl(24 30% 14% / 0.06), 0 16px 40px hsl(24 30% 14% / 0.08);
+    --shadow-ember: 0 8px 24px hsl(18 91% 40% / 0.18), 0 2px 6px hsl(18 91% 40% / 0.12);
+
+    /* Motion */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-base: all 0.3s var(--ease-out);
+
+    /* Sidebar (unused but kept) */
+    --sidebar-background: 30 60% 98%;
+    --sidebar-foreground: 24 30% 14%;
+    --sidebar-primary: 18 91% 40%;
+    --sidebar-primary-foreground: 30 60% 98%;
+    --sidebar-accent: 30 30% 94%;
+    --sidebar-accent-foreground: 24 30% 14%;
+    --sidebar-border: 28 25% 88%;
+    --sidebar-ring: 18 91% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', 'Inter', sans-serif;
+    @apply tracking-tight;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.15);
+    color: hsl(var(--primary));
+  }
+}
+
+@layer components {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .container-narrow {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
+  }
+
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl px-6 sm:px-8;
+  }
+
+  .glass-nav {
+    background: hsl(var(--background) / 0.72);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+  }
+
+  .text-gradient-ember {
+    background: var(--gradient-ember);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
