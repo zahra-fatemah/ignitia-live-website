@@ -27,6 +27,7 @@ const Auth = () => {
   const location = useLocation() as { state?: { from?: string } };
   const [submitting, setSubmitting] = useState(false);
   const redirectTo = location.state?.from || "/dashboard";
+  const emailRedirectTo = new URL("dashboard", `${window.location.origin}${import.meta.env.BASE_URL}`).toString();
 
   if (!loading && user) return <Navigate to={redirectTo} replace />;
 
@@ -71,7 +72,7 @@ const Auth = () => {
       email: parsed.data.email,
       password: parsed.data.password,
       options: {
-        emailRedirectTo: `${window.location.origin}/dashboard`,
+        emailRedirectTo,
         data: {
           full_name: parsed.data.fullName,
           college: parsed.data.college,
